@@ -14,6 +14,9 @@
 		766554F91E81786A000FBE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766554F71E81786A000FBE92 /* Main.storyboard */; };
 		766554FB1E81786A000FBE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 766554FA1E81786A000FBE92 /* Assets.xcassets */; };
 		766554FE1E81786A000FBE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766554FC1E81786A000FBE92 /* LaunchScreen.storyboard */; };
+		7665550A1E817955000FBE92 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 766555091E817955000FBE92 /* Todo.m */; };
+		7665550D1E817D2F000FBE92 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7665550C1E817D2F000FBE92 /* TodoTableViewCell.m */; };
+		766555101E81AE2C000FBE92 /* NewTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7665550F1E81AE2C000FBE92 /* NewTodoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,12 @@
 		766554FA1E81786A000FBE92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		766554FD1E81786A000FBE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		766554FF1E81786A000FBE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		766555081E817955000FBE92 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
+		766555091E817955000FBE92 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		7665550B1E817D2F000FBE92 /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
+		7665550C1E817D2F000FBE92 /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
+		7665550E1E81AE2C000FBE92 /* NewTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTodoViewController.h; sourceTree = "<group>"; };
+		7665550F1E81AE2C000FBE92 /* NewTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTodoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +70,23 @@
 		766554EA1E81786A000FBE92 /* Every.Do */ = {
 			isa = PBXGroup;
 			children = (
-				766554EE1E81786A000FBE92 /* AppDelegate.h */,
-				766554EF1E81786A000FBE92 /* AppDelegate.m */,
 				766554F11E81786A000FBE92 /* MasterViewController.h */,
 				766554F21E81786A000FBE92 /* MasterViewController.m */,
 				766554F41E81786A000FBE92 /* DetailViewController.h */,
 				766554F51E81786A000FBE92 /* DetailViewController.m */,
+				7665550E1E81AE2C000FBE92 /* NewTodoViewController.h */,
+				7665550F1E81AE2C000FBE92 /* NewTodoViewController.m */,
 				766554F71E81786A000FBE92 /* Main.storyboard */,
 				766554FA1E81786A000FBE92 /* Assets.xcassets */,
 				766554FC1E81786A000FBE92 /* LaunchScreen.storyboard */,
 				766554FF1E81786A000FBE92 /* Info.plist */,
 				766554EB1E81786A000FBE92 /* Supporting Files */,
+				766555081E817955000FBE92 /* Todo.h */,
+				766555091E817955000FBE92 /* Todo.m */,
+				7665550B1E817D2F000FBE92 /* TodoTableViewCell.h */,
+				7665550C1E817D2F000FBE92 /* TodoTableViewCell.m */,
+				766554EE1E81786A000FBE92 /* AppDelegate.h */,
+				766554EF1E81786A000FBE92 /* AppDelegate.m */,
 			);
 			path = Every.Do;
 			sourceTree = "<group>";
@@ -155,8 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7665550A1E817955000FBE92 /* Todo.m in Sources */,
 				766554F01E81786A000FBE92 /* AppDelegate.m in Sources */,
+				766555101E81AE2C000FBE92 /* NewTodoViewController.m in Sources */,
 				766554F31E81786A000FBE92 /* MasterViewController.m in Sources */,
+				7665550D1E817D2F000FBE92 /* TodoTableViewCell.m in Sources */,
 				766554ED1E81786A000FBE92 /* main.m in Sources */,
 				766554F61E81786A000FBE92 /* DetailViewController.m in Sources */,
 			);
@@ -313,6 +331,7 @@
 				766555041E81786A000FBE92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

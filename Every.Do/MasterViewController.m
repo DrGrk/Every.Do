@@ -8,11 +8,17 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "NewTodoViewController.h"
+#import "Todo.h"
+#import "TodoTableViewCell.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property NSMutableArray *objects;
+@property (nonatomic, strong) NSMutableArray *objects;
+@property (nonatomic, strong) NSMutableArray <Todo *> *arrayOfTodos;
+
 @end
+
 
 @implementation MasterViewController
 
@@ -20,29 +26,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+-(void)setNewTodo:(Todo *)todo{
+    [self.arrayOfTodos insertObject:todo atIndex:0];
+    [self.tableView reloadData];
+}
+
+-(void)dontSaveNewTodo{
+    [self.arrayOfTodos removeObjectAtIndex:0];
+}
 
 - (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
+    if (!self.arrayOfTodos) {
+        self.arrayOfTodos = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self performSegueWithIdentifier:@"insertNewObject" sender:sender];
 }
 
 
@@ -51,9 +59,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        Todo *todoSelected = self.arrayOfTodos[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
-        [controller setDetailItem:object];
+        [controller setDetailItem:todoSelected];
+    }
+    if ([[segue identifier] isEqualToString:@"insertNewObject"]) {
+//CREATE INSTANCE OF NEWTODO VC && CREATE INSTANCE OF TODO && SEND INSTANCE TO NEWTODO VC
+        NewTodoViewController *newToDoVC = (NewTodoViewController *)[segue destinationViewController];
+        newToDoVC.delegate = self;
+        Todo *todo = [[Todo alloc] init];
+        [newToDoVC setNewToDo:todo];
     }
 }
 
@@ -64,26 +79,22 @@
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.arrayOfTodos.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.titleLabel.text = self.arrayOfTodos[indexPath.row].title;
+    cell.todoDescriptionLabel.text = self.arrayOfTodos[indexPath.row].todoDescription;
+    cell.priorityNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.arrayOfTodos[indexPath.row].priorityNumber];
     return cell;
 }
-
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
