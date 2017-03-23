@@ -12,5 +12,10 @@
 
 @implementation Todo
 
+-(void)complete{
+    self.completionIndicator = YES;
+    [self.delegate strikeThrough];
+    return;
+}
 
 @end

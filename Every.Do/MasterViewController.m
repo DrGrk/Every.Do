@@ -14,7 +14,6 @@
 
 @interface MasterViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray *objects;
 @property (nonatomic, strong) NSMutableArray <Todo *> *arrayOfTodos;
 
 @end
@@ -53,6 +52,12 @@
     [self performSegueWithIdentifier:@"insertNewObject" sender:sender];
 }
 
+- (IBAction)completeSwipe:(UISwipeGestureRecognizer *)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    Todo *todoSelected = self.arrayOfTodos[indexPath.row];
+    [todoSelected complete];
+    
+}
 
 #pragma mark - Segues
 
@@ -85,6 +90,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    self.arrayOfTodos[indexPath.row].delegate = cell;
     cell.titleLabel.text = self.arrayOfTodos[indexPath.row].title;
     cell.todoDescriptionLabel.text = self.arrayOfTodos[indexPath.row].todoDescription;
     cell.priorityNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.arrayOfTodos[indexPath.row].priorityNumber];
@@ -98,7 +104,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
+        [self.arrayOfTodos removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

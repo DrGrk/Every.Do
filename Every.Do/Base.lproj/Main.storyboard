@@ -60,7 +60,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afd-uv-PHm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afd-uv-PHm">
                                 <rect key="frame" x="317" y="95" width="42" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99030521370000002" green="0.91561474639999996" blue="0.86711505740000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,10 +208,12 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="priorityNumberLabel" destination="apC-tR-X44" id="Vdn-TW-Lb7"/>
                                     <outlet property="titleLabel" destination="MUR-52-mom" id="APe-qR-y3q"/>
                                     <outlet property="todoDescriptionLabel" destination="pzt-6S-7Az" id="wAi-gs-Qzq"/>
+                                    <outletCollection property="gestureRecognizers" destination="BWP-FV-LUJ" appends="YES" id="Grm-rS-anO"/>
                                     <segue destination="JEX-9P-axG" kind="show" identifier="showDetail" id="3g5-t3-D5n"/>
                                 </connections>
                             </tableViewCell>
@@ -228,6 +230,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="BWP-FV-LUJ">
+                    <connections>
+                        <action selector="completeSwipe:" destination="7bK-jq-Zjz" id="MBH-VE-8Ed"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="708" y="-630.13493253373315"/>
         </scene>

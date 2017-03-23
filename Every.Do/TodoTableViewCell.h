@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Todo;
+#import "Todo.h"
 
-@interface TodoTableViewCell : UITableViewCell
+@interface TodoTableViewCell : UITableViewCell <StrikeThrough>
 
 @property (strong, nonatomic) Todo *todo;
 

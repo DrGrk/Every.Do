@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol StrikeThrough <NSObject>
+
+-(void)strikeThrough;
+
+@end
+
 @interface Todo : NSObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *todoDescription;
 @property (nonatomic) NSInteger priorityNumber;
 @property (nonatomic) BOOL completionIndicator;
+@property id <StrikeThrough> delegate;
+
+-(void)complete;
 
 @end

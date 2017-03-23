@@ -20,6 +20,18 @@
     // Configure the view for the selected state
 }
 
+-(void)strikeThrough{
+    NSDictionary* attributes = @{
+                                 NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+                                 };
+    
+    NSAttributedString* titleAttrText = [[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:attributes];
+    self.titleLabel.attributedText = titleAttrText;
+    
+    NSAttributedString* descriptionAttrText = [[NSAttributedString alloc] initWithString:self.todoDescriptionLabel.text attributes:attributes];
+    self.todoDescriptionLabel.attributedText = descriptionAttrText;
+}
+
 
 
 @end
