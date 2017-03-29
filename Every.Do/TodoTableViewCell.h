@@ -9,13 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Todo.h"
 
-@interface TodoTableViewCell : UITableViewCell <StrikeThrough>
+@interface TodoTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) Todo *todo;
-
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *todoDescriptionLabel;
-@property (strong, nonatomic) IBOutlet UILabel *priorityNumberLabel;
 
 
 @end

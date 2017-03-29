@@ -76,6 +76,8 @@
 				766554F51E81786A000FBE92 /* DetailViewController.m */,
 				7665550E1E81AE2C000FBE92 /* NewTodoViewController.h */,
 				7665550F1E81AE2C000FBE92 /* NewTodoViewController.m */,
+				7665550B1E817D2F000FBE92 /* TodoTableViewCell.h */,
+				7665550C1E817D2F000FBE92 /* TodoTableViewCell.m */,
 				766554F71E81786A000FBE92 /* Main.storyboard */,
 				766554FA1E81786A000FBE92 /* Assets.xcassets */,
 				766554FC1E81786A000FBE92 /* LaunchScreen.storyboard */,
@@ -83,8 +85,6 @@
 				766554EB1E81786A000FBE92 /* Supporting Files */,
 				766555081E817955000FBE92 /* Todo.h */,
 				766555091E817955000FBE92 /* Todo.m */,
-				7665550B1E817D2F000FBE92 /* TodoTableViewCell.h */,
-				7665550C1E817D2F000FBE92 /* TodoTableViewCell.m */,
 				766554EE1E81786A000FBE92 /* AppDelegate.h */,
 				766554EF1E81786A000FBE92 /* AppDelegate.m */,
 			);

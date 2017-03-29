@@ -37,7 +37,7 @@
     self.todo.title = self.setTitleLabel.text;
     self.todo.todoDescription = self.setTodoDescriptionLabel.text;
     self.todo.priorityNumber = [self.setPriorityNumberLabel.text integerValue];
-    self.todo.completionIndicator = NO;
+    self.todo.complete = NO;
     
 //CALL DELEGATE PROTOCOL AND DISMISS VIEW
     [self.delegate setNewTodo:self.todo];

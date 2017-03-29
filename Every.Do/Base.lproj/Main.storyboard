@@ -213,7 +213,6 @@
                                     <outlet property="priorityNumberLabel" destination="apC-tR-X44" id="Vdn-TW-Lb7"/>
                                     <outlet property="titleLabel" destination="MUR-52-mom" id="APe-qR-y3q"/>
                                     <outlet property="todoDescriptionLabel" destination="pzt-6S-7Az" id="wAi-gs-Qzq"/>
-                                    <outletCollection property="gestureRecognizers" destination="BWP-FV-LUJ" appends="YES" id="Grm-rS-anO"/>
                                     <segue destination="JEX-9P-axG" kind="show" identifier="showDetail" id="3g5-t3-D5n"/>
                                 </connections>
                             </tableViewCell>
@@ -230,11 +229,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="BWP-FV-LUJ">
-                    <connections>
-                        <action selector="completeSwipe:" destination="7bK-jq-Zjz" id="MBH-VE-8Ed"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="708" y="-630.13493253373315"/>
         </scene>

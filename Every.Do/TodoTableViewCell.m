@@ -9,10 +9,23 @@
 #import "TodoTableViewCell.h"
 #import "Todo.h"
 
+@interface TodoTableViewCell()
+@property (nonatomic) UISwipeGestureRecognizer *swipe;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *todoDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priorityNumberLabel;
+
+@end
+
 @implementation TodoTableViewCell
 
-- (void)awakeFromNibWithTodo:(Todo *)todo{
+- (void)awakeFromNib {
     [super awakeFromNib];
+    // add gesture
+    self.swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self addGestureRecognizer:self.swipe];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,18 +33,32 @@
     // Configure the view for the selected state
 }
 
--(void)strikeThrough{
-    NSDictionary* attributes = @{
-                                 NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
-                                 };
+
+- (void)handleGesture:(UISwipeGestureRecognizer *)sender {
     
-    NSAttributedString* titleAttrText = [[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:attributes];
-    self.titleLabel.attributedText = titleAttrText;
-    
-    NSAttributedString* descriptionAttrText = [[NSAttributedString alloc] initWithString:self.todoDescriptionLabel.text attributes:attributes];
-    self.todoDescriptionLabel.attributedText = descriptionAttrText;
+    // set the completed state on the model
+    self.todo.complete = !self.todo.complete;
+    // update the cell
+    [self updateView];
 }
 
+- (void)updateView {
+    NSNumber *completed = @(self.todo.complete);
+    NSDictionary* strikeThrough = @{NSStrikethroughStyleAttributeName: completed};
+    NSAttributedString* attributedTitle = [[NSAttributedString alloc] initWithString:self.todo.title attributes:strikeThrough];
+    NSAttributedString* attributedDesc = [[NSAttributedString alloc] initWithString:self.todo.todoDescription attributes:strikeThrough];
+    
+    self.titleLabel.attributedText = attributedTitle;
+    self.todoDescriptionLabel.attributedText = attributedDesc;
+    self.priorityNumberLabel.text = @(self.todo.priorityNumber).stringValue;
+}
+
+
+- (void)setTodo:(Todo *)todo {
+    _todo = todo;
+    
+    [self updateView];
+}
 
 
 @end

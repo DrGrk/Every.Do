@@ -21,6 +21,10 @@
 
 @implementation MasterViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+    animated = YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -29,8 +33,6 @@
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -50,13 +52,6 @@
         self.arrayOfTodos = [[NSMutableArray alloc] init];
     }
     [self performSegueWithIdentifier:@"insertNewObject" sender:sender];
-}
-
-- (IBAction)completeSwipe:(UISwipeGestureRecognizer *)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    Todo *todoSelected = self.arrayOfTodos[indexPath.row];
-    [todoSelected complete];
-    
 }
 
 #pragma mark - Segues
@@ -90,10 +85,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    self.arrayOfTodos[indexPath.row].delegate = cell;
-    cell.titleLabel.text = self.arrayOfTodos[indexPath.row].title;
-    cell.todoDescriptionLabel.text = self.arrayOfTodos[indexPath.row].todoDescription;
-    cell.priorityNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.arrayOfTodos[indexPath.row].priorityNumber];
+    cell.todo = self.arrayOfTodos[indexPath.row];
     return cell;
 }
 

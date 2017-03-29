@@ -19,9 +19,9 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *todoDescription;
 @property (nonatomic) NSInteger priorityNumber;
-@property (nonatomic) BOOL completionIndicator;
-@property id <StrikeThrough> delegate;
+@property (nonatomic, getter=isComplete) BOOL complete;
+//@property id <StrikeThrough> delegate;
 
--(void)complete;
+//-(void)complete;
 
 @end
